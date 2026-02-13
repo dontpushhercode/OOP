@@ -1,20 +1,24 @@
 package practice2;
-
-class Student {
+import java.util.HashMap;
+//problem #4
+public class Student {
 	private String name;
 	private int yearOfStudy;
 	private static int counter = 0;
 	private int id;
 	
-	Student(){
+	private static HashMap<Integer, Student> studentList = new HashMap<>();
+	
+	public Student(){
 		this("Unknown", 1);
 	}
 	
-	Student(String name, int yearOfStudy){
+	public Student(String name, int yearOfStudy){
 		counter++;
 		this.name = name;
 		this.yearOfStudy = yearOfStudy;
-		id = counter;
+		this.id = counter;
+		studentList.put(Integer.valueOf(id), this);
 	}
 	
 	public String getName(){
@@ -31,5 +35,13 @@ class Student {
 	
 	public void incYearOfStudy() {
 		yearOfStudy++;
+	}
+	
+	public static Student getStudentById(int id) {
+		return studentList.get(id);
+	}
+	
+	public String toString() {
+		return "Student "+this.name+" id: "+this.id+" year of study: "+yearOfStudy;
 	}
 }
