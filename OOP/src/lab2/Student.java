@@ -2,17 +2,17 @@ package lab2;
 //p:5
 import java.util.Objects;
 
-public class Employee extends Person {
-	private String company;
-	
-	public Employee(String name, int age, String company) {
+public class Student extends Person {
+	private double gpa;
+
+	public Student(String name, int age, double gpa) {
 		super(name, age);
-		this.company = company;
+		this.gpa = gpa;
 	}
 	
 	@Override
 	public String getOccupation() {
-		return "This person is employed in: " + company;
+		return "This student has gpa: " + gpa;
 	}
 	
 	@Override
@@ -21,17 +21,17 @@ public class Employee extends Person {
 		if(o == null) return false;
 		if(o.getClass()!=this.getClass()) return false;
 		if(!super.equals(o)) return false;
-		Employee s = (Employee) o;
-		return Objects.equals(company, s.company);
+		Student s = (Student) o;
+		return gpa == s.gpa;
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), company);
+		return Objects.hash(super.hashCode(), gpa);
 	}
 	
 	@Override
 	public String toString() {
-		return super.toString() + ", working at: "+company+"; ";
+		return super.toString() + ", has gpa: "+gpa+"; ";
 	}
 }
